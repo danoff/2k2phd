@@ -1,4 +1,8 @@
-# 2k2phd Monorepo
+# Intro
+
+The idea for this app is to be an easy way to find [Open Educational Resources](https://en.wikipedia.org/wiki/Open_educational_resources), or OER, on a mobile device. I am using the "[Build More Architect Dreams](https://github.com/bmad-code-org/BMAD-METHOD) — An AI-driven agile development module for the BMad Method" to try and build this app. The rest of the markdown file below and all the other files in the repo so far have been made by [ChatGPT Codex](https://en.wikipedia.org/wiki/OpenAI_Codex) using this approach. - Charles Danoff of [Mr. Danoff's Teaching Laboratory, LLC](https://mr.danoff.org)
+
+## 2k2phd Monorepo
 
 This workspace contains the core services for the MVP:
 
