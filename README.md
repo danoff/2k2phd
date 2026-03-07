@@ -1,8 +1,8 @@
-# OER Matcher Monorepo
+# 2k2phd Monorepo
 
-This workspace contains three services for the MVP:
+This workspace contains the core services for the MVP:
 
-- `mobile-app`: client app (single-platform first release)
+- `mobile-app`: Android client app (single-platform first release)
 - `oer-matching-api`: rules-based recommendation and ticket APIs
 - `oer-ingestion-worker`: OER metadata ingestion and normalization
 - `shared`: shared schemas and service contracts
@@ -18,7 +18,13 @@ This workspace contains three services for the MVP:
 
 ## Quick Start
 
-1. Choose the launch platform in `docs/planning/decision-log.md`.
-2. Fill out `docs/planning/backlog.md` with owners and dates.
+1. Review product loop in `docs/product/mvp-core-loop.md`.
+2. Review mobile architecture baseline in `docs/architecture/mobile-oss-baseline.md`.
 3. Implement API contracts in `shared/contracts`.
-4. Build vertical slice: onboarding -> recommendations -> feedback -> ticket.
+4. Build vertical slice: home search -> results -> detail actions -> feedback/ticket.
+
+## Android Scaffold Run (MVP)
+
+1. Open `mobile-app` in Android Studio.
+2. Sync Gradle and run `app` on an emulator/device.
+3. Validate Home flow: Search prompt -> submit -> Results list.

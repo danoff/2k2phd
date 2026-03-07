@@ -1,10 +1,10 @@
 # Decision Log
 
 ## D-001 Launch Platform
-- Status: Open
-- Decision: Android or iOS single-platform launch
-- Rationale: Reduce QA and delivery complexity
-- Due: ASAP
+- Status: Decided
+- Decision: Android single-platform launch first
+- Rationale: Lower delivery complexity and fastest MVP feedback loop
+- Decided: 2026-03-07
 
 ## D-002 Metadata Standard
 - Status: Open
