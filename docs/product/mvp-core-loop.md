@@ -1,39 +1,54 @@
 # 2k2phd MVP Core Loop (Android)
 
 ## Product Intent
-2k2phd gives educators and learners a low-burden way to find useful Open Educational Resources quickly, then improve relevance only when needed.
+2k2phd gives adult learners a low-burden way to find useful, trustworthy Open Educational Resources quickly, then refine only when needed so they can stop searching and start learning.
 
 ## Core Loop v1
-1. User lands on post-login Home screen.
-2. User sees question prompt and search bar.
-3. User submits query and immediately gets a results list.
-4. User opens OER detail and can take low-stakes actions.
-5. User marks `Use This` to signal intent and continue browsing.
-6. App asks lightweight refinements only if quality signals are low.
+1. User creates an account or signs in.
+2. User lands on the Home screen.
+3. User sees a search-first layout with one clearly separated sponsor area.
+4. User submits a query and immediately gets a results list.
+5. User opens an OER detail view with source, provenance, and license information.
+6. User takes a low-stakes action: save, rate usefulness, open the original source, or request a better match.
+7. App asks lightweight refinements only if quality signals are low or the user has not found a useful result within 3 searches.
 
 ## Home Screen v1
 - Search-first region: ~80% of viewport.
-- Pulse region: <=20% of viewport for Hot/Fresh/Activity updates.
-- Prompt: `What type of OER do you want to find today?`
+- Sponsor region: ~20% of viewport for a single ad or sponsor placement.
+- Prompt: `What do you want to learn today?`
+- If sponsor cards are later introduced into recommendation flows, default target is no more than 1 sponsored card per 20 organic cards, always clearly labeled.
 
 ## OER Detail Actions (MVP)
 - View Original OER
 - Save
-- Remix
-- Use This (mark intent, continue browsing)
+- Rate Useful / Not Useful
+- Use This
 - Need Better Match
+
+## Trust and License Requirements
+- Show source for every surfaced OER.
+- Show license for every surfaced OER.
+- Exclude unsupported or ambiguous-license content from surfaced results.
+- Keep sponsor content visually separate from organic OER results.
 
 ## Refinement Triggers
 - User opens 2+ details and takes no action.
-- User deep-scrolls results with no saves/click-through.
+- User deep-scrolls results with no saves, positive ratings, or click-through.
 - User taps `Need Better Match`.
 - Result confidence is low or set is empty.
+- User has not found a useful result within 3 searches.
 
 ## MVP Telemetry
 - home_viewed
+- account_created
+- sign_in_completed
 - search_focused
 - search_submitted
 - results_viewed
 - oer_opened
+- resource_saved
+- oer_rated
 - use_this_marked
 - need_better_match_clicked
+- sponsor_card_impression
+- sponsor_card_clicked
