@@ -3,10 +3,8 @@
 ## POST /v1/recommendations
 Request:
 - session_id
-- intent
-- time_bucket
-- mode
-- optional: language, accessibility, connectivity, level
+- query
+- optional: language, accessibility, connectivity, level, context_tags[]
 
 Response:
 - recommendations[]
@@ -15,6 +13,10 @@ Response:
   - score
   - rationale[]
   - remix_eligible
+  - source
+  - license
+  - provenance
+  - trust_status
 
 ## POST /v1/feedback
 Request:
@@ -26,11 +28,8 @@ Request:
 ## POST /v1/tickets
 Request:
 - session_id
-- intent
-- time_bucket
-- mode
-- deadline
-- level
+- query
+- optional: learner_note
 - trigger_reason
 - last_recommendation_ids[]
 

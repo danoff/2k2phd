@@ -4,13 +4,14 @@
 2k2phd gives adult learners a low-burden way to find useful, trustworthy Open Educational Resources quickly, then refine only when needed so they can stop searching and start learning.
 
 ## Core Loop v1
-1. User creates an account or signs in.
+1. User opens the app without mandatory account creation.
 2. User lands on the Home screen.
 3. User sees a search-first layout with one clearly separated sponsor area.
 4. User submits a query and immediately gets a results list.
 5. User opens an OER detail view with source, provenance, and license information.
-6. User takes a low-stakes action: save, rate usefulness, open the original source, or request a better match.
-7. App asks lightweight refinements only if quality signals are low or the user has not found a useful result within 3 searches.
+6. User takes an action: `Use This`, save, rate usefulness, open the original source, or request a better match.
+7. If no acceptable result is found, the app offers a prefilled ticket fallback with clear expectation-setting.
+8. App asks lightweight refinements only if quality signals are low or the user has not found a useful result within 3 searches.
 
 ## Home Screen v1
 - Search-first region: ~80% of viewport.
@@ -20,6 +21,7 @@
 
 ## OER Detail Actions (MVP)
 - View Original OER
+- View trust, source, provenance, and license info
 - Save
 - Rate Useful / Not Useful
 - Use This
@@ -40,8 +42,6 @@
 
 ## MVP Telemetry
 - home_viewed
-- account_created
-- sign_in_completed
 - search_focused
 - search_submitted
 - results_viewed
@@ -50,5 +50,7 @@
 - oer_rated
 - use_this_marked
 - need_better_match_clicked
+- ticket_submitted
+- survey_completed
 - sponsor_card_impression
 - sponsor_card_clicked

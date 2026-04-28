@@ -1,14 +1,13 @@
 # 2k2phd Product Requirements
 
-**Status:** Draft  
-**Date:** 2026-03-13  
-**Author:** OpenAI Codex (BMad Master)  
-**Requested by:** CodexSandboxOffline  
+**Status:** Aligned to validated PRD  
+**Date:** 2026-04-27  
+**Source of truth:** `C:\Users\charl\_bmad-output\planning-artifacts\prd.md`  
 **Platform:** Android-first MVP
 
 ## 1. Purpose
 
-This document defines the product requirements for the `2k2phd` MVP. It is intended for repo use as an implementation-facing artifact derived from the current product brief and planning materials.
+This document is the repo-facing implementation summary for the validated `2k2phd` MVP. If this file conflicts with the validated PRD, the PRD wins.
 
 ## 2. Product Summary
 
@@ -16,9 +15,10 @@ This document defines the product requirements for the `2k2phd` MVP. It is inten
 
 The MVP is optimized for a simple outcome:
 
-1. user enters a search
-2. user receives relevant OER results with visible trust and license information
-3. user finds a useful result within 3 searches
+1. User opens the app without mandatory account creation.
+2. User enters a search.
+3. User receives relevant OER results with visible trust and license information.
+4. User finds a useful result within 3 searches, or requests a better match.
 
 ## 3. Target User
 
@@ -31,9 +31,13 @@ Primary contexts:
 1. Finding material for a formal course
 2. Finding material for self-education
 
+Secondary operator:
+
+1. Charlie as reviewer for ticket triage and product-health review
+
 ## 4. Primary User Job
 
-Help the user find OER that matches their search within 3 tries so they can stop searching and start learning.
+Help the user find an acceptable OER alternative within 3 tries so they can stop searching and start learning.
 
 ## 5. Product Principles
 
@@ -43,127 +47,108 @@ Help the user find OER that matches their search within 3 tries so they can stop
 4. Ads must not compromise usability or credibility.
 5. The app should help users start learning quickly, not trap them in browsing.
 6. The product must respect learner attention and avoid manipulative UX patterns.
-
-### 5.1 UX Inspiration and Emulation Goals
-
-The product should study and selectively emulate successful mobile patterns from widely used consumer apps:
-
-1. Instagram
-   - Emulate intuitive onboarding, fast visual clarity, and immediate ease of use
-2. Discord
-   - Emulate clear information hierarchy, strong community-oriented interaction patterns, and low-friction navigation
-3. WhatsApp
-   - Emulate simple, confidence-building interface decisions and low cognitive overhead
-4. Google Search
-   - Emulate direct query-first interaction, speed, and obvious relevance-oriented design
-5. Duolingo
-   - Emulate motivating learning UX, lightweight gamification, and momentum-building feedback loops
-
-These references are inspiration targets, not copying instructions. `2k2phd` should adapt the underlying usability strengths while maintaining its own identity, trust model, and learning purpose.
+7. The MVP should avoid unnecessary private-data collection.
 
 ## 6. MVP Scope
 
 The MVP includes:
 
 1. Android app
-2. Account creation and sign-in
-3. Search-first home screen
-4. OER results list
-5. OER detail screen
-6. Trust and licensing display
-7. Save and rating actions
-8. Search refinement support
-9. One ad or sponsor placement on the home landing page only
+2. Search-first home screen
+3. OER results list
+4. OER detail view
+5. Trust, provenance, and licensing display
+6. `Use This` as the primary success action
+7. Save and usefulness-rating actions
+8. `Need Better Match` fallback
+9. Ticket creation with clear expectation-setting
+10. Session-level telemetry without mandatory accounts
+11. One restrained sponsor or ad placement strategy with clear labeling
 
 The MVP excludes:
 
-1. iOS or multi-platform launch
-2. Child or minor accounts
-3. In-app remixing or authoring
-4. Advanced AI-generated learning plans
-5. Multiple ad placements
+1. Mandatory account creation and sign-in
+2. iOS or multi-platform launch
+3. Child or minor accounts
+4. In-app remixing or authoring
+5. Advanced AI-generated learning plans
 6. Broad volunteer-governance systems
 
 ## 7. Functional Requirements
 
-### 7.1 Account and Identity
+### 7.1 Discovery and Search
 
-1. The app must allow a user to create an account.
-2. The app must allow a user to sign in and sign out.
-3. The app must persist saved resources and ratings to the signed-in account.
-4. The app should minimize onboarding friction.
-5. The MVP does not require MFA.
-6. Future-state identity exploration may include MFA and Wikimedia-aligned federation, but neither is an MVP requirement.
+1. The app must allow a learner to open and use core discovery flows without creating an account.
+2. The app must present clear age and usage guidance before or during initial use.
+3. The app must allow a learner to submit a free-text search query.
+4. The app must return a results list after query submission.
+5. The app must support refinement when the initial results are weak or the learner requests a better match.
+6. The system must distinguish successful search paths from failed search paths.
 
-### 7.2 Home Screen
+### 7.2 OER Result Evaluation
 
-1. The home screen must prioritize search as the primary action.
-2. Approximately 80% of the home landing view should support search and discovery activity.
-3. Approximately 20% of the home landing view may be reserved for one ad or sponsor placement.
-4. The ad or sponsor placement must be clearly distinguishable from search results.
-5. The home screen must not present additional ad surfaces beyond the single reserved area.
+1. The app must allow the learner to open a result detail view.
+2. The detail view must show source information.
+3. The detail view must show license information.
+4. The detail view must show provenance or trust context.
+5. The detail view must provide a path to the original OER.
+6. The system must exclude or suppress content with unclear provenance, ambiguous licensing, or insufficient trust context.
+7. The app should show a short explanation of why a result is being shown when explanation data is available.
 
-### 7.3 Search and Recommendations
+### 7.3 Actions and Feedback
 
-1. The app must allow the user to submit a free-text search query.
-2. The app must return a results list after query submission.
-3. The app must rank results using rules-based matching for MVP.
-4. The app must support refinement when the initial results are weak or the user requests a better match.
-5. The app should optimize for useful discovery within 3 searches.
-6. The app should show a short explanation of why a result is being shown when feasible.
-7. Sponsored recommendations, if shown in recommendation flows beyond the home landing page, must be clearly labeled and interleaved conservatively, with a default target of no more than one sponsored card per 20 organic recommendation cards unless later product decisions explicitly change that ratio.
+1. The detail view must allow the learner to select `Use This`.
+2. The system must treat `Use This` as the primary successful-match event.
+3. The detail view must allow the learner to save a resource.
+4. The detail view must allow the learner to rate usefulness.
+5. The detail view must allow the learner to indicate they need a better match.
+6. The app must support a lightweight appreciation or usefulness survey.
 
-### 7.4 OER Detail and Actions
+### 7.4 Ticket Fallback
 
-1. The app must allow the user to open a result detail view.
-2. The detail view must show source and license information.
-3. The detail view must provide a path to the original OER.
-4. The detail view must allow the user to save a resource.
-5. The detail view must allow the user to rate usefulness.
-6. The detail view must allow the user to indicate they need a better match.
+1. The app must allow a learner to submit a request ticket when they do not find an acceptable OER.
+2. Ticket submission must include search or topic context.
+3. Ticket UX must state clearly that fulfillment is not guaranteed concierge support.
+4. Ticket UX must state clearly that response timing depends on Charlie and volunteer capacity.
+5. Charlie must be able to review submitted request tickets with enough context to triage them.
 
-### 7.5 Trust, Provenance, and Licensing
+### 7.5 Telemetry and Product Health
 
-1. The app must display source provenance for surfaced OER.
-2. The app must display the applicable license for surfaced OER.
-3. The app must exclude content with unclear provenance or ambiguous licensing.
-4. The app must conservatively filter out license classes that are not explicitly approved for MVP.
-5. The MVP approved content classes are:
-   - CC0
-   - CC BY
-   - CC BY-SA
-   - similar commercially safe and open licenses such as the FreeBSD Documentation License and CeCILL, subject to explicit validation
-
-### 7.6 Ratings and Feedback
-
-1. The app must allow the user to submit a usefulness rating for an opened OER.
-2. The app must capture whether a result was helpful or not helpful.
-3. The app should use this feedback to inform future ranking improvements.
+1. The system must track result impressions and result opens.
+2. The system must track `Use This`, save, usefulness feedback, ticket submission, and survey completion.
+3. The system must track sponsor or ad impressions and interactions when present.
+4. Charlie must be able to review product-health signals related to downloads, searches, successful matches, tickets, surveys, and monetization.
+5. The telemetry model must support session-level tracking without requiring persistent user profiles.
 
 ## 8. Non-Functional Requirements
 
 ### 8.1 Usability
 
 1. The app must maintain a low-friction search-to-learning flow.
-2. The app must avoid cluttered layouts that compete with the primary search task.
-3. The app must keep sponsorship visually restrained.
-4. The app should aim for consumer-grade intuitiveness comparable to leading mobile apps in onboarding, navigation clarity, and motivational interaction design.
+2. Search must remain the dominant interaction on the home screen.
+3. Trust and license information must be visible without deep navigation.
 
-### 8.2 Trust
+### 8.2 Performance
+
+1. Search submission to first result should target under 3 seconds on typical WiFi.
+2. Detail view loading should target under 2 seconds.
+3. `Use This` recording should target under 1 second.
+
+### 8.3 Reliability
+
+1. The app should fail clearly when network conditions prevent effective search.
+2. Ticket, feedback, and telemetry events should be preserved across ordinary retry conditions when feasible.
+
+### 8.4 Accessibility
+
+1. The MVP must include an accessibility pass for the top flows.
+2. Search, result browsing, detail viewing, `Use This`, feedback, ticket submission, and survey flows must be accessible.
+
+### 8.5 Trust and Sponsorship
 
 1. Sponsored placement must not be confused with organic OER recommendations.
 2. The app must not present manipulative or attention-extractive ad patterns.
-3. Trust and license information must be visible without requiring deep navigation.
-
-### 8.3 Accessibility
-
-1. The MVP must include an accessibility pass for the top 5 flows.
-2. Core search, result browsing, detail viewing, save, and rating flows must be accessible.
-
-### 8.4 Performance
-
-1. The product should target time to first useful card under 20 seconds in pilot conditions.
-2. The app should support fast query submission and readable result presentation on common Android devices.
+3. Sponsorship must not obscure source, license, provenance, or trust-status information.
 
 ## 9. Telemetry Requirements
 
@@ -178,37 +163,31 @@ The MVP must capture the following events at minimum:
 7. `need_better_match_clicked`
 8. `oer_rated`
 9. `resource_saved`
-10. `sponsor_card_impression`
-11. `sponsor_card_clicked`
+10. `ticket_submitted`
+11. `survey_completed`
+12. `sponsor_card_impression`
+13. `sponsor_card_clicked`
 
 The telemetry model should support these product metrics:
 
 1. Downloads
 2. Successful search rate
-3. OER rating quality
-
-Metric definitions:
-
-1. Successful search rate: percentage of users who find and open a useful OER within 3 searches
-2. OER rating quality: percentage of opened OERs receiving positive usefulness ratings
-3. Sponsor card impression: a tracked view of a clearly labeled sponsor placement in an eligible screen context
-4. Sponsor card click: a tracked user tap on a clearly labeled sponsor placement
+3. Ticket submission rate
+4. OER rating quality
+5. Survey completion rate
 
 ## 10. Backlog Alignment
 
 The following backlog items are P0-aligned with this requirements set:
 
-1. Onboarding screen and telemetry events
+1. Search-first home and results flow
 2. Rules-based scoring engine v1
 3. License eligibility hard filter
-4. Recommendation feed UI and "Why this now"
-5. Helpful / Not helpful event capture
-6. Accessibility pass for top 5 flows
-
-The following require clarification before implementation if kept in MVP:
-
-1. Ticket creation endpoint and prefilled context
-2. Trust panel depth and contributor signal fields
+4. Recommendation cards with trust information and rationale
+5. `Use This` plus usefulness feedback capture
+6. Ticket creation endpoint with prefilled context
+7. Accessibility pass for top flows
+8. Telemetry events for search outcomes and fallback paths
 
 ## 11. Open Decisions
 
@@ -217,19 +196,19 @@ The following planning decisions remain open and should be resolved before imple
 1. Metadata standard baseline
 2. Final license validation matrix, including FreeBSD Documentation License handling, CeCILL handling, and any other approved license classes
 3. Exact success threshold for a "useful" result event
-4. Persistence model and auth provider for account creation and sign-in
+4. Minimum ticket-context bundle for reviewer triage
+5. Minimum product-health dashboard or report shape for Charlie
 
 ## 12. Acceptance Criteria Summary
 
 The MVP should be considered functionally ready when:
 
-1. an adult learner can create an account and sign in
-2. the learner can search for OER from the home screen
-3. the learner receives results with visible source and license information
-4. the learner can open, save, and rate a result
-5. the learner can request a better match
-6. only one home-screen ad or sponsor placement is present
-7. sponsored content is clearly separated from organic results
-8. sponsor-card interleaving, if used beyond the home landing page, does not exceed the current default target of one sponsored card per 20 organic recommendation cards and remains clearly labeled
-9. unsupported or unclear-license content is excluded from surfaced results
-10. telemetry is available for the defined MVP events and success metrics, including sponsor impressions and clicks
+1. An adult learner can open the app without mandatory account creation.
+2. The learner can search for OER from the home screen.
+3. The learner receives results with visible source, license, and trust information.
+4. The learner can open, save, rate, and mark `Use This` on a result.
+5. The learner can request a better match and submit a ticket with context.
+6. Ticket expectation-setting is clear and non-deceptive.
+7. Sponsored content, if present, is clearly separated from organic results.
+8. Unsupported or unclear-license content is excluded or clearly suppressed from surfaced results.
+9. Telemetry is available for the defined MVP events and success metrics, including search outcomes, ticket submissions, survey completions, and sponsor interactions.

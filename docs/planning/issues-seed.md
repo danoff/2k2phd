@@ -1,15 +1,15 @@
 # GitHub Issues Seed
 
-## 1. Build 3-tap onboarding + telemetry
+## 1. Build search-first home flow + telemetry
 - Labels: `mobile`, `p0`
 - Acceptance:
-  - User can pick intent/time/mode in <= 3 taps
-  - Events emitted: onboarding_started/completed, intent_selected, time_selected, mode_selected
+  - User can open app and reach search-first home without mandatory sign-in
+  - Events emitted: home_viewed, search_focused, search_submitted
 
 ## 2. Implement scoring engine v1
 - Labels: `api`, `p0`
 - Acceptance:
-  - Score based on intent/time/mode
+  - Score based on search query and trust-eligible metadata
   - Returns top-N with score explanation fields
 
 ## 3. Add remix license hard filter
@@ -26,13 +26,13 @@
 ## 5. Add Helpful / Not helpful feedback capture
 - Labels: `mobile`, `api`, `p0`
 - Acceptance:
-  - One-tap feedback on each card
+  - `Use This`, helpful, and not-helpful actions are available on result detail flow
   - API persists feedback event with session context
 
 ## 6. Ticket-first fallback endpoint
 - Labels: `api`, `p0`
 - Acceptance:
-  - Prefilled ticket includes intent/time/mode + last recommendation ids
+  - Prefilled ticket includes search query + last recommendation ids + trigger reason
   - Returns queue id and status
 
 ## 7. Persistent "Need better match?" control
@@ -44,7 +44,7 @@
 ## 8. Trust panel v1
 - Labels: `mobile`, `api`, `p1`
 - Acceptance:
-  - Displays source, license, contributor signal, reference count
+  - Displays source, license, provenance, and contributor signal/reference count when available
 
 ## 9. Offline/cache resilience
 - Labels: `mobile`, `api`, `p1`, `reliability`
@@ -55,4 +55,4 @@
 ## 10. Accessibility validation on top flows
 - Labels: `mobile`, `p0`, `a11y`
 - Acceptance:
-  - Screen reader support verified for onboarding, recommendation, feedback, ticket submit
+  - Screen reader support verified for search, recommendation, feedback, ticket submit

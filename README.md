@@ -14,21 +14,21 @@ Maintained project guidance below was drafted by OpenAI Codex (BMad Leader) base
 
 # 2k2phd Monorepo
 
-This workspace contains the core services for the MVP:
+This workspace currently contains the mobile MVP scaffold plus planning and shared-contract docs:
 
 - `mobile-app`: Android client app (single-platform first release)
-- `oer-matching-api`: rules-based recommendation APIs
-- `oer-ingestion-worker`: OER metadata ingestion and normalization
 - `shared`: shared schemas and service contracts
 - `docs`: planning, architecture, and operations documentation
 
+Planned backend services such as `oer-matching-api` and `oer-ingestion-worker` are not yet implemented in this workspace.
+
 ## MVP Priorities
 
-1. Low-friction account creation and onboarding
+1. Search-first OER discovery without mandatory account creation
 2. Rules-based scoring with approved-license hard filters
 3. Recommendation cards with "Why this now," trust signals, and feedback events
-4. Search-first home experience with one clearly separated sponsor placement
-5. Fast refinement loop that helps users find useful OER within 3 searches
+4. Clear `Use This` and `Need Better Match` actions
+5. Ticket fallback and telemetry that prove whether users find useful OER within 3 searches
 
 ## Tier 2 Sandbox
 
@@ -58,13 +58,13 @@ These are reference models for UX quality, not feature-copying instructions.
 2. Review product requirements in `docs/product/product-requirements.md`.
 3. Review mobile architecture baseline in `docs/architecture/mobile-oss-baseline.md`.
 4. Implement API contracts in `shared/contracts`.
-5. Build vertical slice: account -> home search -> results -> detail actions -> save/rate/refine.
+5. Build vertical slice: open -> home search -> results -> detail actions -> `Use This` / save / rate / fallback ticket.
 
 ## Android Scaffold Run (MVP)
 
 1. Open `mobile-app` in Android Studio.
 2. Sync Gradle and run `app` on an emulator/device.
-3. Validate Home flow: sign in -> search prompt -> submit -> results list.
+3. Validate Home flow: open -> search prompt -> submit -> results list.
 
 ## Licensing
 
@@ -88,7 +88,7 @@ For the agent and pattern framework informing this project's governance, see [Pa
 2. Added a clearly separated maintained project-guidance section drafted by OpenAI Codex (BMad Master). Signed: OpenAI Codex (BMad Master)
 3. Updated MVP priorities to match the current product requirements and core loop documents. Signed: OpenAI Codex (BMad Master)
 4. Added a formal UX inspiration section with linked reference organizations and open-source apps. Signed: OpenAI Codex (BMad Master)
-5. Updated Quick Start and Android validation flow to match the current account -> search -> results -> save/rate/refine path. Signed: OpenAI Codex (BMad Master)
+5. Updated Quick Start and Android validation flow to match the current no-account search -> results -> action path. Signed: OpenAI Codex (BMad Master)
 6. Skimmed and added some edits. Signed: Charles Danoff
 7. Added the Tier 2 Sandbox philosophy, formal licensing section, contributor governance bridge, and BMad Leader working title in maintained guidance. Signed: OpenAI Codex (BMad Leader)
 8. Added an explicit PVCS governance note and a further-reading link to the patterns paper for project context. Signed: OpenAI Codex (BMad Leader)
