@@ -2,7 +2,7 @@
 
 **Status:** Aligned to validated PRD  
 **Date:** 2026-04-27  
-**Source of truth:** `C:\Users\charl\_bmad-output\planning-artifacts\prd.md`  
+**Source of truth:** `docs/product/prd.md`  
 **Platform:** Android-first MVP
 
 ## 1. Purpose
@@ -212,3 +212,4 @@ The MVP should be considered functionally ready when:
 7. Sponsored content, if present, is clearly separated from organic results.
 8. Unsupported or unclear-license content is excluded or clearly suppressed from surfaced results.
 9. Telemetry is available for the defined MVP events and success metrics, including search outcomes, ticket submissions, survey completions, and sponsor interactions.
+
