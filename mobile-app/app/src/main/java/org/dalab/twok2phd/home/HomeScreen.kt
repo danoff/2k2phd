@@ -26,12 +26,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 fun HomeScreen(
     onSearchSubmitted: (String) -> Unit,
-    viewModel: HomeViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -59,6 +60,7 @@ fun HomeScreen(
                     trailingIcon = {
                         TextButton(onClick = {
                             if (uiState.searchQuery.isNotBlank()) {
+                                viewModel.onSearchSubmitted()
                                 onSearchSubmitted(uiState.searchQuery.trim())
                             }
                         }) {
@@ -104,7 +106,9 @@ fun HomeScreen(
                     LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         items(uiState.pulseItems) { item ->
                             Card(
-                                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+                                colors = CardDefaults.cardColors(
+                                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                                )
                             ) {
                                 Column(
                                     modifier = Modifier
@@ -113,7 +117,11 @@ fun HomeScreen(
                                     verticalArrangement = Arrangement.spacedBy(4.dp)
                                 ) {
                                     Text(item.kind, style = MaterialTheme.typography.labelSmall)
-                                    Text(item.title, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
+                                    Text(
+                                        item.title,
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        fontWeight = FontWeight.Medium
+                                    )
                                     Text(item.subtitle, style = MaterialTheme.typography.bodySmall)
                                 }
                             }
