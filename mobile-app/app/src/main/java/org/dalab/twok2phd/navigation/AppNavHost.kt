@@ -28,9 +28,8 @@ fun AppNavHost() {
         composable(
             route = AppRoute.Results.route,
             arguments = listOf(navArgument(AppRoute.Results.ARG_QUERY) { type = NavType.StringType })
-        ) { backStackEntry ->
-            val query = backStackEntry.arguments?.getString(AppRoute.Results.ARG_QUERY).orEmpty()
-            ResultsScreen(query = query)
+        ) {
+            ResultsScreen()
         }
     }
 }

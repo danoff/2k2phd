@@ -20,20 +20,33 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 fun HomeScreen(
     onSearchSubmitted: (String) -> Unit,
-    viewModel: HomeViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val searchInteractionSource = remember { MutableInteractionSource() }
+    val isSearchFocused by searchInteractionSource.collectIsFocusedAsState()
+
+    LaunchedEffect(isSearchFocused) {
+        if (isSearchFocused) {
+            viewModel.onSearchFocused()
+        }
+    }
 
     LazyColumn(
         modifier = Modifier
@@ -56,11 +69,10 @@ fun HomeScreen(
                     modifier = Modifier.fillMaxWidth(),
                     placeholder = { Text("Search topics, grade level, format, license...") },
                     singleLine = true,
+                    interactionSource = searchInteractionSource,
                     trailingIcon = {
                         TextButton(onClick = {
-                            if (uiState.searchQuery.isNotBlank()) {
-                                onSearchSubmitted(uiState.searchQuery.trim())
-                            }
+                            viewModel.onSearchSubmitted()?.let(onSearchSubmitted)
                         }) {
                             Text("Search")
                         }
