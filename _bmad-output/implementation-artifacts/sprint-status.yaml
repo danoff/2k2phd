@@ -1,0 +1,77 @@
+# generated: 2026-05-16
+# last_updated: 2026-05-16
+# project: 2k2phd
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: _bmad-output/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - Developer typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: "2026-05-16"
+last_updated: "2026-05-16"
+project: 2k2phd
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+
+development_status:
+
+  # ─── Epic 1: Core Discovery Loop (Mobile) ───────────────────────────────────
+  # GitHub Issues: #1, #4 done. #3 (back-nav), #5, #7, #10 are P0 next.
+  epic-1: in-progress
+
+  1-1-search-first-home-flow-and-telemetry: done         # Issue #1 — Sprint 1 ✓
+  1-2-recommendation-card-ui-with-why-this-now: done     # Issue #4 — Sprint 1 ✓
+  1-3-back-navigation-from-results-to-home: backlog      # P0 — required before detail screen
+  1-4-helpful-and-not-helpful-feedback-capture: backlog  # Issue #5 — P0
+  1-5-persistent-need-better-match-control: backlog      # Issue #7 — P0; depends on 1-4
+  1-6-accessibility-validation-on-top-flows: backlog     # Issue #10 — P0; after UI stabilizes
+
+  epic-1-retrospective: optional
+
+  # ─── Epic 2: Backend Matching Service ───────────────────────────────────────
+  # New service (oer-matching-api) not yet in repo.
+  # Mobile fake implementations exist; these stories replace them with real endpoints.
+  epic-2: backlog
+
+  2-1-scoring-engine-v1: backlog            # Issue #2 — P0 backend
+  2-2-remix-license-hard-filter: backlog    # Issue #3 — P0 backend, compliance
+  2-3-ticket-first-fallback-endpoint: backlog  # Issue #6 — P0 backend
+
+  epic-2-retrospective: optional
+
+  # ─── Epic 3: Trust, Resilience, and Enrichment ──────────────────────────────
+  # P1 work. Deepens trust signals and hardens app for real-world conditions.
+  epic-3: backlog
+
+  3-1-trust-panel-v1: backlog            # Issue #8 — P1; needs detail screen (after 1-2)
+  3-2-offline-and-cache-resilience: backlog  # Issue #9 — P1
+
+  epic-3-retrospective: optional
