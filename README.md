@@ -61,6 +61,8 @@ These are reference models for UX quality, not feature-copying instructions.
 
 ## Quick Start
 
+For the current repository-wide assessment, prototype boundary, prioritized findings, and four-week execution plan, see [`docs/planning/repository-audit-2026-09-26.md`](docs/planning/repository-audit-2026-09-26.md).
+
 1. Review product loop in `docs/product/mvp-core-loop.md`.
 2. Review product requirements in `docs/product/product-requirements.md`.
 3. Review mobile architecture baseline in `docs/architecture/mobile-oss-baseline.md`.
