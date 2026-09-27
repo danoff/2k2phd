@@ -18,5 +18,10 @@ class InMemoryTelemetryRepository @Inject constructor() : TelemetryRepository {
         _events.update { currentEvents ->
             (currentEvents + event).takeLast(maxEvents)
         }
+    private val _events = MutableStateFlow<List<TelemetryEvent>>(emptyList())
+    override val events: StateFlow<List<TelemetryEvent>> = _events.asStateFlow()
+
+    override fun record(event: TelemetryEvent) {
+        _events.value = _events.value + event
     }
 }

@@ -6,7 +6,14 @@ Charles Danoff of [Mr. Danoff's Teaching Laboratory, LLC](https://mr.danoff.org)
 Chicago
 14 March 2026
 
----
+## Update 7 May 2026
+
+Claude Code and Codex in the web browswer are now doing the work using BMAD method.
+
+Charles Danoff
+Chicago
+
+## From Codex
 
 Maintained project guidance below was drafted by OpenAI Codex (BMad Leader) based on the current repo planning artifacts and user direction.
 

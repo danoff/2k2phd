@@ -10,13 +10,15 @@ Response:
 - recommendations[]
   - resource_id
   - title
+  - resource_type         # "Lesson Plan", "Video", "Worksheet", "Activity Set", etc.
+  - estimated_effort      # human-readable string e.g. "~45 min", "1–2 hrs"
   - score
-  - rationale[]
+  - rationale[]           # ordered list; top 3 shown in "Why this now" card section
   - remix_eligible
   - source
   - license
   - provenance
-  - trust_status
+  - trust_status          # "verified" | "community" | "unreviewed"
 
 ## POST /v1/feedback
 Request:
