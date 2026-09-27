@@ -71,9 +71,14 @@ For the current repository-wide assessment, prototype boundary, prioritized find
 
 ## Android Scaffold Run (MVP)
 
-1. Open `mobile-app` in Android Studio.
-2. Sync Gradle and run `app` on an emulator/device.
-3. Validate Home flow: open -> search prompt -> submit -> results list.
+The Android build requires JDK 17 and an Android SDK containing API 35.
+
+1. Install JDK 17, the Android SDK, and Gradle.
+2. Run `./scripts/generate-gradle-wrapper.sh` once from the repository root.
+3. Commit the four generated wrapper files with ordinary binary-capable Git; the Codex diff interface cannot publish `gradle-wrapper.jar`.
+4. From `mobile-app`, run `./gradlew testDebugUnitTest assembleDebug`.
+5. Open `mobile-app` in Android Studio, sync Gradle, and run `app` on an emulator/device.
+6. Validate Home flow: open -> search prompt -> submit -> results list.
 
 ## Licensing
 
