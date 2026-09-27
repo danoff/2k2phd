@@ -27,6 +27,7 @@ fun AppNavHost() {
 
         composable(
             route = AppRoute.Results.route,
+            arguments = listOf(navArgument(AppRoute.Results.ARG_QUERY) { type = NavType.StringType })
             arguments = listOf(navArgument(AppRoute.Results.ARG_QUERY) { type = NavType.StringType }),
         ) {
             ResultsScreen()
