@@ -96,6 +96,12 @@ For the agent and pattern framework informing this project's governance, see [Pa
 
 ## Changelog
 
+### 2026-09-27 Signed: Charlie + GitHub Copilot (LLM model/GPT-6 Luna)
+
+1. Merged PR #4, adding in-memory telemetry, Hilt dependency injection, a fake OER recommendation repository, recommendation actions, and unit tests.
+2. Merged PR #5, adding a repository audit and prototype execution roadmap.
+3. Added a text-only Gradle wrapper bootstrap script and Git attributes so the wrapper can be generated locally without publishing a binary JAR through the Codex diff interface.
+
 ### 2026-03-14
 
 1. Preserved the original repo intro authored by Charles Danoff at the top of the README. Signed: OpenAI Codex (BMad Master)
